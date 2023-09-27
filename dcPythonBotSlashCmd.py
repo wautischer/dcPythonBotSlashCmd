@@ -18,49 +18,49 @@ GandalfSelfie = 'https://i.kym-cdn.com/entries/icons/original/000/042/690/Screen
 bot = interactions.Client(token="") #enter your token
 
 
-@bot.command(
+@interactions.slash_command(
     name="hello",
     description="Say hi to Gandalf",
-    scope=none, #enter your server id for faster testing
+    scopes=[], #enter your server-id or leave it as is
 )
-async def hello(ctx: interactions.CommandContext):
+async def hello(ctx: interactions.SlashContext):
     await ctx.send("Hi there!")
 
 
-@bot.command(
+@interactions.slash_command(
     name="roll",
     description="Roll a number",
-    scope=none,
+    scopes=[],
 )
-async def roll(ctx: interactions.CommandContext):
+async def roll(ctx: interactions.SlashContext):
     await ctx.send(str(random.randint(1, 24000)))
 
 
-@bot.command(
+@interactions.slash_command(
     name="dailymessage",
     description="Selfie from Gandalf",
-    scope=none,
+    scopes=[],
 )
-async def dailymessage(ctx: interactions.CommandContext):
+async def dailymessage(ctx: interactions.SlashContext):
     await ctx.send(GandalfSelfie)
 
 
-@bot.command(
+@interactions.slash_command(
     name="quote",
     description="Get a quote from Gandalf",
-    scope=none,
+    scopes=[],
 )
-async def quote(ctx: interactions.CommandContext):
+async def quote(ctx: interactions.SlashContext):
     quote = GandalfQuotes[int(random.randint(0, 10))]
     await ctx.send('*' + quote + '*')
 
 
-@bot.command(
+@interactions.slash_command(
     name="help",
     description="Get info about bot functions",
-    scope=none,
+    scopes=[],
 )
-async def help(ctx: interactions.CommandContext):
+async def help(ctx: interactions.SlashContext):
     await ctx.send('***/hello*** **`Say hello to the almighty Gandalf the White.`** ' \
                    '\n***/roll*** **`The great Gandalf the White chooses a number between 1 and 24,000.`**' \
                    '\n***/quote*** **`Gandalf the White will tell you one of his quotes.`**' \
